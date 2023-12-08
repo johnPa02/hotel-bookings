@@ -1,9 +1,11 @@
 package com.tdtu.backend.controller;
 
 import com.tdtu.backend.dto.UserAdminDto;
+import com.tdtu.backend.model.Booking;
 import com.tdtu.backend.model.Room;
 import com.tdtu.backend.model.ServiceModel;
 import com.tdtu.backend.model.User;
+import com.tdtu.backend.service.BookingService;
 import com.tdtu.backend.service.RoomService;
 import com.tdtu.backend.service.ServiceService;
 import com.tdtu.backend.service.UserService;
@@ -15,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -25,6 +28,8 @@ public class AdminController {
     private RoomService roomService;
     @Autowired
     private ServiceService serviceService;
+    @Autowired
+    private BookingService bookingService;
     @Autowired
     public AdminController(UserService userService) {
         this.userService = userService;
@@ -87,5 +92,18 @@ public class AdminController {
         List<ServiceModel> serviceModelList = serviceService.findAll();
         model.addAttribute("servicesList", serviceModelList);
         return "service-admin";
+    }
+    @GetMapping("/bookings")
+    public String showBookings(Model model){
+        List<Booking> bookingList = bookingService.findAllBookings();
+        model.addAttribute("bookingList", bookingList);
+        return "bookings-admin";
+    }
+    @GetMapping("/bookings/details/{id}")
+    public String bookingDetails(Model model, @PathVariable Long id){
+        Booking booking = bookingService.findBookingById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid booking Id:" + id));
+        model.addAttribute("booking",booking);
+        return "adminBookingDetails";
     }
 }

@@ -53,8 +53,8 @@ public class ServiceController {
         return "redirect:/admin/services";
     }
 
-    @PostMapping("/admin/services/{id}/delete")
-    public String deleteService(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/admin/services/{id}/delete")
+    public String deleteService(@PathVariable Long id) {
         serviceService.deleteById(id);
         return "redirect:/admin/services";
     }
