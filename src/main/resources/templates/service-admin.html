@@ -107,7 +107,7 @@
                             <div th:each="serviceModel : ${servicesList}" class="col-lg-4 col-sm-6">
                                 <div class="serviceModel-card">
                                     <!-- Hiển thị hình ảnh -->
-                                    <img th:src="@{'/uploads/' + ${serviceModel.imagePath}}" alt="Service Image">
+                                    <img th:src="@{'/uploads/' + ${serviceModel.imagePath}}"      style="width: 400px; height: 500px; object-fit: cover;" alt="Service Image">
 
                                     <h4 th:text="${serviceModel.name}">Service Name</h4>
                                     <h5 th:text="${serviceModel.price}">Price</h5>
