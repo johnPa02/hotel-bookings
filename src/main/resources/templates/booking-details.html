@@ -3,9 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Sona Template">
+    <meta name="keywords" content="Sona, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đổi mật khẩu</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chi tiết đặt</title>
+
     <link href="https://fonts.googleapis.com/css?family=Lora:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,8 +22,8 @@
     <link rel="stylesheet" th:href="@{/css/magnific-popup.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/slicknav.min.css}" type="text/css">
     <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
-    <link rel="stylesheet" th:href="@{/fonts/material-icon/css/material-design-iconic-font.min.css}">
 </head>
+
 <body>
     <div id="preloder">
         <div class="loader"></div>
@@ -47,11 +50,11 @@
                 <li><a href="/contact">Liên hệ</a></li>
 				<li><a href="/cart">Giỏ hàng</a></li>
 				<li class="active"><a href="/user">Tài khoản</a>
-					<ul class="dropdown">
-						<li><a href="/user">Thông tin tài khoản</a></li>
+                    <ul class="dropdown">
+                        <li><a href="/user">Thông tin tài khoản</a></li>
                         <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
-                        <li><a href="/user/change-pass">Đổi mật khẩu</a></li>
-					</ul>
+                        <li><a href="/user/change-password">Đổi mật khẩu</a></li>
+                    </ul>
 				</li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">
@@ -65,6 +68,7 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
     </div>
+
     <header class="header-section">
         <div class="menu-item">
             <div class="container">
@@ -82,7 +86,7 @@
                                 <ul>
                                     <li><a href="/">Trang chủ</a></li>
                                     <li><a href="/about">Giới thiệu</a></li>
-                                    <li><a href="/rooms">Phòng</a>
+                                    <li><a href="/rooms">Trang</a>
                                     </li>
                                     <li><a href="/services">Dịch vụ</a></li>
                                     <li><a href="/contact">Liên hệ</a></li>
@@ -113,51 +117,40 @@
             </div>
         </div>
     </header>
-        <!-- HEADER END-->
-
-        <!-- CONTENT BEGIN-->
-    <section class="section-acc">
-        <div class="container-acc">
+    <!-- HEADER END-->
+    <div class="breadcrumb-section">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-12 mb-4 mb-sm-5">
-                    <div class="card card-style1 border-0">
-                        <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
-                            <div class="row align-items-center">
-                                <div class="col-lg-6 mb-4 mb-lg-0">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="...">
-                                </div>
-                                <div class="col-lg-6 px-xl-10">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <form th:action="@{/user/change-password}" th:object="${passwordChangeDTO}" method="post">
-                                                    <div class="form-group pass_show">
-                                                        <label for="oldPassword">Current Password</label>
-                                                        <input type="password" th:field="*{oldPassword}" class="form-control" placeholder="Mật khẩu hiện tại" id="oldPassword">
-                                                    </div>
-                                                    <div class="form-group pass_show">
-                                                        <label for="newPassword">New Password</label>
-                                                        <input type="password" th:field="*{newPassword}" class="form-control" placeholder="Mật khẩu mới" id="newPassword">
-                                                    </div>
-                                                    <div class="form-group pass_show">
-                                                        <label for="confirmNewPassword">Confirm Password</label>
-                                                        <input type="password" th:field="*{confirmPassword}" class="form-control" placeholder="Xác nhận mật khẩu mới" id="confirmNewPassword">
-                                                    </div>
-                                                    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
-
-                                                    <div class="mb-2 mb-xl-3 display-28">
-                                                        <button type="submit" class="btn-user">Đổi mật khẩu</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <h2>Chi tiết đơn đặt</h2>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- CONTENT BEGIN-->
+    <section class="rooms-section spad">
+        <div class="container">
+                <div>
+                    <h3>Chi tiết đặt:</h3>
+                    <ul>
+                        <li th:text="'Booking ID: ' + ${booking.id}"></li>
+                        <li th:text="'Khách hàng: ' + ${booking.user.username}"></li>
+                        <li th:text="'Ngày đặt: ' + ${#temporals.format(booking.bookingDate, 'yyyy-MM-dd HH:mm')}"></li>
+                        <li th:text="'Tổng tiền: ' + ${booking.totalPrice} + ' VNĐ'"></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Các item:</h3>
+                    <ul>
+                        <li th:each="item : ${booking.items}">
+                            <span th:if="${item.serviceModel != null}" th:text="'Dịch vụ: ' + ${item.serviceModel.name} + ', Số lượng: ' + ${item.quantity}"></span>
+                            <span th:if="${item.room != null}" th:text="'Phòng: ' + ${item.room.name} + ', Số lượng: ' + ${item.quantity}"></span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Các phòng khác -->
         </div>
     </section>
     <!-- CONTENT END-->
@@ -207,19 +200,25 @@
                 </div>
             </div>
         </div>
-    </footer>
+        
+    <div class="search-model">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+            <div class="search-close-switch"><i class="icon_close"></i></div>
+            <form class="search-model-form">
+                <input type="text" id="search-input" placeholder="Search here.....">
+            </form>
+        </div>
+    </div>
     <!-- FOOTER END-->
-
+    </footer>
     <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
     <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
     <script th:src="@{/js/jquery.nice-select.min.js}"></script>
-    <script th:src="@{js/jquery-ui.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
     <script th:src="@{/js/jquery.slicknav.js}"></script>
     <script th:src="@{/js/owl.carousel.min.js}"></script>
     <script th:src="@{/js/main.js}"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script th:src="@{/js/changepass.js}"></script>
 </body>
+
 </html>

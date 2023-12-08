@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ</title>
+    <title>Chi tiết dịch vụ</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
     <link rel="stylesheet" th:href="@{/assets/css/styles.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -41,7 +41,7 @@
             <ul>
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/about">Giới thiệu</a></li>
-                <li><a href="/rooms">Trang</a>
+                <li><a href="/rooms">Phòng</a>
                 </li>
                 <li><a href="/services">Dịch vụ</a></li>
                 <li><a href="/contact">Liên hệ</a></li>
@@ -49,9 +49,8 @@
                 <li><a href="/user">Tài khoản</a>
                     <ul class="dropdown">
                         <li><a href="/user">Thông tin tài khoản</a></li>
-                        <li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-                        <li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-                        <li><a href="/change-pass">Đổi mật khẩu</a></li>
+                        <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                        <li><a href="/user/change-password">Đổi mật khẩu</a></li>
                     </ul>
                 </li>
                 <li sec:authorize="isAuthenticated()">
@@ -74,7 +73,7 @@
                     <div class="col-lg-2">
                         <div class="logo">
                             <a href="/">
-                                <img src="img/logo.png" alt="">
+                                <img src="/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -84,7 +83,7 @@
                                 <ul>
                                     <li><a href="/">Trang chủ</a></li>
                                     <li><a href="/about">Giới thiệu</a></li>
-                                    <li><a href="/rooms">Trang</a>
+                                    <li><a href="/rooms">Phòng</a>
                                     </li>
                                     <li><a href="/services">Dịch vụ</a></li>
                                     <li><a href="/contact">Liên hệ</a></li>
@@ -92,9 +91,8 @@
                                     <li><a href="/user">Tài khoản</a>
                                         <ul class="dropdown">
                                             <li><a href="/user">Thông tin tài khoản</a></li>
-											<li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-                                            <li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-											<li><a href="/change-pass">Đổi mật khẩu</a></li>
+                                            <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                                            <li><a href="/user/change-password">Đổi mật khẩu</a></li>
                                         </ul>
                                     </li>
                                     <li sec:authorize="isAuthenticated()">
@@ -126,7 +124,7 @@
                     <div class="breadcrumb-text">
                         <h2>Chi tiết dịch vụ</h2>
                         <div class="bt-option">
-                            <a href="./home.html">Trang chủ</a>
+                            <a href="/">Trang chủ</a>
                             <span>Chi tiết dịch vụ</span>
                         </div>
                     </div>
@@ -141,11 +139,11 @@
                 <div class="col-lg-12">
                     <div class="room-details-item">
                         <div style="text-align: center;">
-                            <img class="serviceModel-details" th:src="@{'/uploads/'+${serviceModel.imagePath}}" alt="Service Image">
+                            <img class="serviceModel-details" th:src="@{'/uploads/'+${service.imagePath}}" alt="Service Image">
                         </div>
                         <div class="rd-text">
                             <div class="rd-title">
-                                <h3 th:text="${serviceModel.name}">Nhà hàng</h3>
+                                <h3 th:text="${service.name}">Nhà hàng</h3>
                                 <div class="rdt-right">
                                     <div class="rating">
                                         <i class="icon_star"></i>
@@ -154,12 +152,15 @@
                                         <i class="icon_star"></i>
                                         <i class="icon_star-half_alt"></i>
                                     </div>
-                                    <a href="#">Booking Now</a>
-                                </div>
+                                    <form th:action="@{/cart/add}" method="post">
+                                        <input type="hidden" name="itemId" th:value="${service.id}" />
+                                        <input type="hidden" name="itemType" value="service" />
+                                        <button type="submit" class="booking-btn">Thêm vào giỏ</button>
+                                    </form>                                </div>
                             </div>
-                            <h2 th:text="${serviceModel.price} + ' VNĐ/người'">200.000 VNĐ<span>/người</span></h2>
+                            <h2 th:text="${service.price} + ' VNĐ/người'">200.000 VNĐ<span>/người</span></h2>
 
-                            <p class="f-para" th:text="${serviceModel.description}">Service Description Here</p>
+                            <p class="f-para" th:text="${service.description}">Service Description Here</p>
                         </div>
                     </div>
                 </div>
@@ -177,7 +178,7 @@
                     <div class="col-lg-4">
                         <div class="ft-about">
                             <div class="logo">
-                                <a href="./index.html">
+                                <a href="/">
                                     <img src="img/footer-logo.png" alt="">
                                 </a>
                             </div>

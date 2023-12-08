@@ -44,18 +44,17 @@
             <ul>
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/about">Giới thiệu</a></li>
-                <li class="active"><a href="/rooms">Trang</a>
+                <li class="active"><a href="/rooms">Phòng</a>
                 </li>
                 <li><a href="/services">Dịch vụ</a></li>
                 <li><a href="/contact">Liên hệ</a></li>
 				<li><a href="/cart">Giỏ hàng</a></li>
 				<li><a href="/user">Tài khoản</a>
-					<ul class="dropdown">
-						<li><a href="/user">Thông tin tài khoản</a></li>
-						<li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-						<li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-                        <li><a href="/user/change-pass">Đổi mật khẩu</a></li>
-					</ul>
+                    <ul class="dropdown">
+                        <li><a href="/user">Thông tin tài khoản</a></li>
+                        <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                        <li><a href="/user/change-password">Đổi mật khẩu</a></li>
+                    </ul>
 				</li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">
@@ -76,7 +75,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="/">
                                 <img src="img/logo.png" alt="">
                             </a>
                         </div>
@@ -87,7 +86,7 @@
                                 <ul>
                                     <li><a href="/">Trang chủ</a></li>
                                     <li><a href="/about">Giới thiệu</a></li>
-                                    <li class="active"><a href="/rooms">Trang</a>
+                                    <li class="active"><a href="/rooms">Phòng</a>
                                     </li>
                                     <li><a href="/services">Dịch vụ</a></li>
                                     <li><a href="/contact">Liên hệ</a></li>
@@ -95,9 +94,8 @@
                                     <li><a href="/user">Tài khoản</a>
                                         <ul class="dropdown">
                                             <li><a href="/user">Thông tin tài khoản</a></li>
-                                            <li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-                                            <li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-                                            <li><a href="/user/change-pass">Đổi mật khẩu</a></li>
+                                            <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                                            <li><a href="/user/change-password">Đổi mật khẩu</a></li>
                                         </ul>
                                     </li>
                                     <li sec:authorize="isAuthenticated()">
@@ -145,17 +143,17 @@
                     <div class="room-item">
                         <img th:src="@{'/uploads/'+${room.imagePath}}" alt="Room Image">
                         <div class="ri-text">
-                            <h4 th:text="${room.name}">Phòng A0001</h4>
+                            <h4 th:text="${room.name}"></h4>
                             <h3 th:text="${room.price} + ' $'"><span>/đêm</span></h3>
                             <table>
                                 <tbody>
                                 <tr>
                                     <td class="r-o">Loại:</td>
-                                    <td th:text="${room.category.name}">Phòng đơn</td>
+                                    <td th:text="${room.category.name}"></td>
                                 </tr>
                                 <tr>
                                     <td class="r-o">Số lượng tối đa:</td>
-                                    <td th:text="${room.capacity} + ' người'">1 người</td>
+                                    <td th:text="${room.capacity} + ' người'"></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -185,7 +183,7 @@
                     <div class="col-lg-4">
                         <div class="ft-about">
                             <div class="logo">
-                                <a href="index.html">
+                                <a href="/">
                                     <img src="img/footer-logo.png" alt="">
                                 </a>
                             </div>

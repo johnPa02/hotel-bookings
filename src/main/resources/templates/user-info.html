@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ</title>
+    <title>Thông tin tài khoản</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
     <link rel="stylesheet" th:href="@{/assets/css/styles.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -40,7 +40,7 @@
             <ul>
                 <li><a href="/">Trang chủ</a></li>
                 <li><a href="/about">Giới thiệu</a></li>
-                <li><a href="/rooms">Trang</a>
+                <li><a href="/rooms">Phòng</a>
                 </li>
                 <li><a href="/services">Dịch vụ</a></li>
                 <li><a href="/contact">Liên hệ</a></li>
@@ -48,9 +48,8 @@
                 <li class="active"><a href="/user">Tài khoản</a>
                     <ul class="dropdown">
                         <li><a href="/user">Thông tin tài khoản</a></li>
-                        <li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-                        <li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-                        <li><a href="/user/change-pass">Đổi mật khẩu</a></li>
+                        <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                        <li><a href="/user/change-password">Đổi mật khẩu</a></li>
                     </ul>
                 </li>
                 <li sec:authorize="isAuthenticated()">
@@ -72,8 +71,8 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
-                                <img src="img/logo.png" alt="">
+                            <a href="/">
+                                <img src="/img/logo.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -83,7 +82,7 @@
                                 <ul>
                                     <li><a href="/">Trang chủ</a></li>
                                     <li><a href="/about">Giới thiệu</a></li>
-                                    <li><a href="/rooms">Trang</a>
+                                    <li><a href="/rooms">Phòng</a>
                                     </li>
                                     <li><a href="/services">Dịch vụ</a></li>
                                     <li><a href="/contact">Liên hệ</a></li>
@@ -91,9 +90,8 @@
                                     <li class="active"><a href="/user">Tài khoản</a>
                                         <ul class="dropdown">
                                             <li><a href="/user">Thông tin tài khoản</a></li>
-											<li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-                                            <li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-											<li><a href="/user/change-pass">Đổi mật khẩu</a></li>
+                                            <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+											<li><a href="/user/change-password">Đổi mật khẩu</a></li>
                                         </ul>
                                     </li>
                                     <li sec:authorize="isAuthenticated()">
@@ -130,12 +128,11 @@
                                 </div>
                                 <div class="col-lg-6 px-xl-10">
                                     <div class="bg-secondary d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                        <h3 class="h2 text-white mb-0">Nguyễn Văn Văn</h3>
+                                        <h3 class="h2 text-white mb-0" th:text="${user.username}"></h3>
                                     </div>
                                     <ul class="list-unstyled mb-1-9">
-                                        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Số điện thoại: </span>00000000</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><span class="display-26 text-secondary me-2 font-weight-600">Giới tính: </span>Nam</li>
-                                        <li class="mb-2 mb-xl-3 display-28"><button type="submit" class="btn-user"><a href="./change-pass.html">Đổi mật khẩu</a></button><button type="submit" class="btn-user"><a href="./index.html">Đăng xuất</a></button></li>
+                                        <li class="mb-2 mb-xl-3 display-28">Email: <span th:text="${user.email}"></span></li>
+                                        <li class="mb-2 mb-xl-3 display-28"><button type="submit" class="btn-user"><a href="/user/change-password">Đổi mật khẩu</a></button><button type="submit" class="btn-user"><a href="/login">Đăng xuất</a></button></li>
                                     </ul>
                                     <ul class="social-icon-style1 list-unstyled mb-0 ps-0">
                                         <li><a href="#!"><i class="ti-twitter-alt"></i></a></li>
@@ -163,7 +160,7 @@
                     <div class="col-lg-4">
                         <div class="ft-about">
                             <div class="logo">
-                                <a href="#">
+                                <a href="/">
                                     <img src="img/footer-logo.png" alt="">
                                 </a>
                             </div>

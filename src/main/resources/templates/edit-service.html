@@ -63,6 +63,14 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="/admin/bookings" aria-expanded="false">
+                <span>
+                    <i class="fa-solid fa-user-gear"></i>
+                </span>
+                            <span class="hide-menu">Quản lý đặt phòng</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="/login" aria-expanded="false">
                   <span>
                     <i class="fa-solid fa-right-from-bracket"></i>
@@ -96,34 +104,34 @@
                                 <div class='uk-width-1-1@s'>
                                     <h2 class="uk-text-center">Chỉnh sửa dịch vụ</h2>
                                     <hr />
-                                    <form th:action="@{/admin/services/{id}/edit(id=${serviceModel.id})}" method="post" enctype="multipart/form-data">                                        <div class="uk-width-1-1@s">
+                                    <form th:action="@{/admin/services/{id}/edit(id=${service.id})}" method="post" enctype="multipart/form-data">                                        <div class="uk-width-1-1@s">
                                         <label class="uk-form-label" for="id">ID </label>
                                         <div class="uk-form-controls">
-                                            <input class="uk-input" readonly id="id" name="id" type="text" placeholder="" th:value="${serviceModel.id}" required>
+                                            <input class="uk-input" readonly id="id" name="id" type="text" placeholder="" th:value="${service.id}" required>
                                         </div>
                                     </div>
                                         <div class="uk-width-1-1@s">
                                             <label class="uk-form-label" for="name">Tên</label>
                                             <div class="uk-form-controls">
-                                                <input class="uk-input" id="name" name="name" type="text" placeholder="" th:value="${serviceModel.name}" required>
+                                                <input class="uk-input" id="name" name="name" type="text" placeholder="" th:value="${service.name}" required>
                                             </div>
                                         </div>
                                         <div class="uk-width-1-1@s">
                                             <label class="uk-form-label" for="price">Giá</label>
                                             <div class="uk-form-controls">
-                                                <input class="uk-input" id="price" name="price" type="text" placeholder="" th:value="${serviceModel.price}" required>
+                                                <input class="uk-input" id="price" name="price" type="text" placeholder="" th:value="${service.price}" required>
                                             </div>
                                         </div>
                                         <div class="uk-width-1-1@s">
                                             <label class="uk-form-label" for="description">Mô tả</label>
                                             <div class="uk-form-controls">
-                                                <input class="uk-input" id="description" name="description" type="text" placeholder="" th:value="${serviceModel.description}" required>
+                                                <input class="uk-input" id="description" name="description" type="text" placeholder="" th:value="${service.description}" required>
                                             </div>
                                         </div>
                                         <div class="uk-width-1-1@s">
                                             <label class="uk-form-label" for="imageFile">Hình ảnh hiện tại</label>
                                             <div>
-                                                <img th:src="@{'/uploads/' + ${serviceModel.imagePath}}" alt="Service Image">
+                                                <img th:src="@{'/uploads/' + ${service.imagePath}}" alt="Service Image">
 
                                             </div>
                                         </div>

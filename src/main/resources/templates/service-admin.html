@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trang chủ</title>
+    <title>Quản lý dịch vụ</title>
     <link rel="shortcut icon" type="image/png" th:href="@{/img/logo.png}" />
     <link rel="stylesheet" th:href="@{/assets/css/styles.min.css}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -63,6 +63,14 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
+                        <a class="sidebar-link" href="/admin/bookings" aria-expanded="false">
+                <span>
+                    <i class="fa-solid fa-user-gear"></i>
+                </span>
+                            <span class="hide-menu">Quản lý đặt phòng</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
                         <a class="sidebar-link" href="/login" aria-expanded="false">
                   <span>
                     <i class="fa-solid fa-right-from-bracket"></i>
@@ -104,12 +112,10 @@
                                     <h4 th:text="${serviceModel.name}">Service Name</h4>
                                     <h5 th:text="${serviceModel.price}">Price</h5>
                                     <p th:text="${serviceModel.description}">Description</p>
-
-                                    <div class="actions">
-                                        <form th:action="@{/admin/services/{id}/delete(id=${serviceModel.id})}" method="post">
-                                            <button class="booking-btn" type="submit">Delete</button>
-                                        </form>
-                                        <a class="booking-btn" th:href="@{/admin/services/{id}/edit(id=${serviceModel.id})}">Edit</a>
+                                    <div style="text-align:center;">
+                                        <a class="booking-btn" th:href="@{/admin/services/{id}/edit(id=${serviceModel.id})}">Sửa</a>
+                                        <a class="booking-btn" th:href="@{/admin/services/{id}/delete(id=${serviceModel.id})}"
+                                           th:onclick="'return confirm(\'Bạn có chắc chắn muốn xóa dịch vụ này?\')'">Xóa</a>
                                     </div>
                                 </div>
                             </div>

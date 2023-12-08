@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link sidebar-item-active" href="/admin/users" aria-expanded="false">
+              <a href="/admin/users" aria-expanded="false">
                 <span>
                     <i class="fa-solid fa-user-gear"></i>
                 </span>
@@ -90,38 +90,30 @@
                   </a>
                 </li>
               </ul>
-              <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                 <a href="/admin/users/create" class = "booking-btn">Thêm tài khoản</a>
-                </ul>
-              </div>
         </nav>
       </header>
       <div class="container-fluid">
         <section class="rooms-section spad">
           <div class="container">
             <div class="row">
-              <table class="table table-bordered m-0">
-                <thead>
-                <tr>
-                  <th class="text-center py-3 px-4">Username</th>
-                  <th class="text-center py-3 px-4">Email</th>
-                  <th class="text-center py-3 px-4">Roles</th>
-                  <th class="text-center py-3 px-4">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="user : ${users}">
-                  <td class="text-center align-middle p-4" th:text="${user.username}"></td>
-                  <td class="text-center align-middle p-4" th:text="${user.email}"></td>
-                  <td class="text-center align-middle p-4" th:text="${user.roles}"></td>
-                  <td class="text-center align-middle p-4">
-                    <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-primary">Edit</a>
-                    <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
+              <div>
+                <h3>Chi tiết đặt:</h3>
+                <ul>
+                  <li th:text="'Booking ID: ' + ${booking.id}"></li>
+                  <li th:text="'Khách hàng: ' + ${booking.user.username}"></li>
+                  <li th:text="'Ngày đặt: ' + ${#temporals.format(booking.bookingDate, 'yyyy-MM-dd HH:mm')}"></li>
+                  <li th:text="'Tổng tiền: ' + ${booking.totalPrice} + ' VNĐ'"></li>
+                </ul>
+              </div>
+              <div>
+                <h3>Các item:</h3>
+                <ul>
+                  <li th:each="item : ${booking.items}">
+                    <span th:if="${item.serviceModel != null}" th:text="'Dịch vụ: ' + ${item.serviceModel.name} + ', Số lượng: ' + ${item.quantity}"></span>
+                    <span th:if="${item.room != null}" th:text="'Phòng: ' + ${item.room.name} + ', Số lượng: ' + ${item.quantity}"></span>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </section>
@@ -136,5 +128,4 @@
   <script th:src="@{/assets/libs/simplebar/dist/simplebar.js}"></script>
   <script th:src="@{/assets/js/dashboard.js}"></script>
 </body>
-
 </html>

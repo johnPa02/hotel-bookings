@@ -51,12 +51,11 @@
                 <li><a href="./contact.html">Liên hệ</a></li>
 				<li><a th:href="@{/cart}">Giỏ hàng</a></li>
 				<li><a href="/user">Tài khoản</a>
-					<ul class="dropdown">
-						<li><a href="/user">Thông tin tài khoản</a></li>
-						<li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-						<li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-                        <li><a th:href="@{/user/change-password}">Đổi mật khẩu</a></li>
-					</ul>
+                    <ul class="dropdown">
+                        <li><a href="/user">Thông tin tài khoản</a></li>
+                        <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                        <li><a href="/user/change-password">Đổi mật khẩu</a></li>
+                    </ul>
 				</li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" method="post">
@@ -77,7 +76,7 @@
                 <div class="row">
                     <div class="col-lg-2">
                         <div class="logo">
-                            <a href="./index.html">
+                            <a href="/">
                                 <img src="/img/logo.png" alt="">
                             </a>
                         </div>
@@ -88,7 +87,7 @@
                                 <ul>
                                     <li class="active"><a href="/">Trang chủ</a></li>
                                     <li><a href="/about">Giới thiệu</a></li>
-                                    <li><a href="/rooms">Trang</a>
+                                    <li><a href="/rooms">Phòng</a>
                                     </li>
                                     <li><a th:href="@{/services}">Dịch vụ</a></li>
                                     <li><a href="./contact.html">Liên hệ</a></li>
@@ -96,9 +95,8 @@
                                     <li><a href="/user">Tài khoản</a>
                                         <ul class="dropdown">
                                             <li><a href="/user">Thông tin tài khoản</a></li>
-											<li><a href="./history-room.html">Xem lịch sử đặt phòng</a></li>
-                                            <li><a href="./history-serviceModel.html">Xem lịch sử đặt dịch vụ</a></li>
-											<li><a th:href="@{/user/change-password}">Đổi mật khẩu</a></li>
+                                            <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                                            <li><a href="/user/change-password">Đổi mật khẩu</a></li>
                                         </ul>
                                     </li>
                                     <li sec:authorize="isAuthenticated()">
@@ -375,7 +373,7 @@
                     <div class="col-lg-4">
                         <div class="ft-about">
                             <div class="logo">
-                                <a href="./index.html">
+                                <a href="/">
                                     <img src="img/footer-logo.png" alt="">
                                 </a>
                             </div>

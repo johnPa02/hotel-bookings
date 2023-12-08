@@ -43,19 +43,18 @@
             <ul>
                 <li><a th:href="@{/index.html}">Trang chủ</a></li>
                 <li><a th:href="@{./about-us.html}">Giới thiệu</a></li>
-                <li><a th:href="@{./rooms.html}">Trang</a>
+                <li><a th:href="@{./rooms.html}">Phòng</a>
 
                 </li>
                 <li><a th:href="@{./serviceModel.html}">Dịch vụ</a></li>
                 <li><a th:href="@{./contact.html}">Liên hệ</a></li>
 				<li><a th:href="@{./cart.html}">Giỏ hàng</a></li>
 				<li><a th:href="@{./user-info.html}">Tài khoản</a>
-					<ul class="dropdown">
-						<li><a th:href="@{./user-info.html}">Thông tin tài khoản</a></li>
-						<li><a th:href="@{./history-room.html}">Xem lịch sử đặt phòng</a></li>
-						<li><a th:href="@{./history-serviceModel.html}">Xem lịch sử đặt dịch vụ</a></li>
-                        <li><a th:href="@{./change-pass.html}">Đổi mật khẩu</a></li>
-					</ul>
+                    <ul class="dropdown">
+                        <li><a href="/user">Thông tin tài khoản</a></li>
+                        <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                        <li><a href="/user/change-password">Đổi mật khẩu</a></li>
+                    </ul>
 				</li>
 				<li class="active"><a th:href="@{/login}" >Đăng nhập</a></li>
             </ul>
@@ -80,17 +79,16 @@
                                 <ul>
                                     <li><a th:href="@{./index.html}">Trang chủ</a></li>
                                     <li><a th:href="@{./about-us.html}">Giới thiệu</a></li>
-                                    <li><a th:href="@{./rooms.html}">Trang</a>
+                                    <li><a th:href="@{./rooms.html}">Phòng</a>
                                     </li>
                                     <li><a th:href="@{./serviceModel.html}">Dịch vụ</a></li>
                                     <li><a th:href="@{./contact.html}">Liên hệ</a></li>
 									<li><a th:href="@{./cart.html}">Giỏ hàng</a></li>
                                     <li><a th:href="@{./user-info.html}">Tài khoản</a>
                                         <ul class="dropdown">
-                                            <li><a th:href="@{./user-info.html}">Thông tin tài khoản</a></li>
-											<li><a th:href="@{./history-room.html}">Xem lịch sử đặt phòng</a></li>
-                                            <li><a th:href="@{./history-serviceModel.html}">Xem lịch sử đặt dịch vụ</a></li>
-											<li><a th:href="@{./change-pass.html}">Đổi mật khẩu</a></li>
+                                            <li><a href="/user">Thông tin tài khoản</a></li>
+                                            <li ><a href="/user/history">Xem lịch sử đặt phòng</a></li>
+                                            <li><a href="/user/change-password">Đổi mật khẩu</a></li>
                                         </ul>
                                     </li>
 									<li class="active"><a th:href="@{./login.html}" >Đăng nhập</a></li>

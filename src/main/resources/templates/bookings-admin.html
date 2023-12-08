@@ -53,7 +53,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link sidebar-item-active" href="/admin/users" aria-expanded="false">
+              <a href="/admin/users" aria-expanded="false">
                 <span>
                     <i class="fa-solid fa-user-gear"></i>
                 </span>
@@ -61,7 +61,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/admin/bookings" aria-expanded="false">
+              <a class="sidebar-link sidebar-item-active" href="/admin/bookings" aria-expanded="false">
                 <span>
                     <i class="fa-solid fa-user-gear"></i>
                 </span>
@@ -90,11 +90,6 @@
                   </a>
                 </li>
               </ul>
-              <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                 <a href="/admin/users/create" class = "booking-btn">Thêm tài khoản</a>
-                </ul>
-              </div>
         </nav>
       </header>
       <div class="container-fluid">
@@ -104,20 +99,21 @@
               <table class="table table-bordered m-0">
                 <thead>
                 <tr>
-                  <th class="text-center py-3 px-4">Username</th>
-                  <th class="text-center py-3 px-4">Email</th>
-                  <th class="text-center py-3 px-4">Roles</th>
+                  <th class="text-center py-3 px-4">Mã đơn đặt</th>
+                  <th class="text-center py-3 px-4">Mã khách hàng</th>
+                  <th class="text-center py-3 px-4">Ngày đặt</th>
+                  <th class="text-center py-3 px-4">Tổng tiền</th>
                   <th class="text-center py-3 px-4">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user : ${users}">
-                  <td class="text-center align-middle p-4" th:text="${user.username}"></td>
-                  <td class="text-center align-middle p-4" th:text="${user.email}"></td>
-                  <td class="text-center align-middle p-4" th:text="${user.roles}"></td>
+                <tr th:each="booking : ${bookingList}">
+                  <td class="text-center align-middle p-4" th:text="${booking.id}"></td>
+                  <td class="text-center align-middle p-4" th:text="${booking.user.id}"></td>
+                  <td class="text-center align-middle p-4" th:text="${booking.bookingDate}"></td>
+                  <td class="text-center align-middle p-4" th:text="${booking.totalPrice}"></td>
                   <td class="text-center align-middle p-4">
-                    <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-primary">Edit</a>
-                    <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/admin/bookings/details/{id}(id=${booking.id})}" class="btn btn-primary">Detail</a>
                   </td>
                 </tr>
                 </tbody>
