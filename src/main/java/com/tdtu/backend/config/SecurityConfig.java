@@ -28,7 +28,7 @@ public class SecurityConfig {
                                 "/js/**", "/img/**","/vendor/**","/fonts/**","/js/**")
                         .permitAll()
                         .requestMatchers("/cart", "/cart/**","/cart/add", "/orders", "/checkout",
-                                "/user/change-password","/booking/create")
+                                "/user/change-password","/booking/create","/user/history/**")
                         .hasAuthority("ROLE_USER")
                         .requestMatchers("/admin/**", "/rooms/edit/**","/rooms/update/**", "/rooms/delete/**", "/rooms/create/**")
                         .hasAuthority("ROLE_ADMIN")
